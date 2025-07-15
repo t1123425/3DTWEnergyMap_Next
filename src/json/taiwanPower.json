@@ -1,0 +1,32 @@
+{
+    "data":[
+    {
+        "date": "20250601T164000",
+        "area": "North",
+        "areaName":"北部",
+        "powerGen": "1106.3",
+        "powerConsumption": "995.4"
+    },
+    {
+        "date": "20250601T164000",
+        "area": "Central",
+        "areaName":"中部",
+        "powerGen": "947.4",
+        "powerConsumption": "871.1"
+    },
+    {
+        "date": "20250601T164000",
+        "area": "South",
+        "areaName":"南部",
+        "powerGen": "909.4",
+        "powerConsumption": "1057.4"
+    },
+    {
+        "date": "20250601T164000",
+        "areaName":"東部",
+        "area": "East",
+        "powerGen": "9.7",
+        "powerConsumption": "49.0"
+    }
+]
+}

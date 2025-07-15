@@ -1,0 +1,136 @@
+{
+  "data": [
+    {
+      "cityId": "TWCHA",
+      "name": "Changhua",
+      "area": "Central",
+      "ch_name": "彰化縣"
+    },
+    {
+      "cityId": "TWCYI",
+      "name": "Chiayi City",
+      "area": "South",
+      "ch_name": "嘉義市"
+    },
+    {
+      "cityId": "TWCYQ",
+      "name": "Chiayi",
+      "area": "South",
+      "ch_name": "嘉義縣"
+    },
+    {
+      "cityId": "TWHSQ",
+      "name": "Hsinchu",
+      "area": "North",
+      "ch_name": "新竹縣"
+    },
+    {
+      "cityId": "TWHSZ",
+      "name": "Hsinchu City",
+      "area": "North",
+      "ch_name": "新竹市"
+    },
+    {
+      "cityId": "TWHUA",
+      "name": "Hualien",
+      "area": "East",
+      "ch_name": "花蓮縣"
+    },
+    {
+      "cityId": "TWILA",
+      "name": "Yilan",
+      "area": "North",
+      "ch_name": "宜蘭縣"
+    },
+    {
+      "cityId": "TWKEE",
+      "name": "Keelung City",
+      "area": "North",
+      "ch_name": "基隆市"
+    },
+    {
+      "cityId": "TWKHH",
+      "name": "Kaohsiung City",
+      "area": "South",
+      "ch_name": "高雄市"
+    },
+    {
+      "cityId": "TWKIN",
+      "name": "Kinmen",
+      "area": "Island",
+      "ch_name": "金門縣"
+    },
+    {
+      "cityId": "TWLIE",
+      "name": "Matsu Islands",
+      "area": "Island",
+      "ch_name": "連江縣"
+    },
+    {
+      "cityId": "TWMIA",
+      "name": "Miaoli",
+      "area": "Central",
+      "ch_name": "苗栗縣"
+    },
+    {
+      "cityId": "TWNAN",
+      "name": "Nantou",
+      "area": "Central",
+      "ch_name": "南投縣"
+    },
+    {
+      "cityId": "TWNWT",
+      "name": "New Taipei City",
+      "area": "North",
+      "ch_name": "新北市"
+    },
+    {
+      "cityId": "TWPEN",
+      "name": "Penghu",
+      "area": "Island",
+      "ch_name": "澎湖縣"
+    },
+    {
+      "cityId": "TWPIF",
+      "name": "Pingtung",
+      "area": "South",
+      "ch_name": "屏東縣"
+    },
+    {
+      "cityId": "TWTAO",
+      "name": "Taoyuan",
+      "area": "North",
+      "ch_name": "桃園市"
+    },
+    {
+      "cityId": "TWTNN",
+      "name": "Tainan City",
+      "area": "South",
+      "ch_name": "台南市"
+    },
+    {
+      "cityId": "TWTPE",
+      "name": "Taipei City",
+      "area": "North",
+      "ch_name": "台北市"
+    },
+    {
+      "cityId": "TWTTT",
+      "name": "Taitung",
+      "area": "East",
+      "ch_name": "台東縣"
+    },
+    {
+      "cityId": "TWTXG",
+      "name": "Taichung City",
+      "area": "Central",
+      "ch_name": "台中市"
+    },
+    {
+      "cityId": "TWYUN",
+      "name": "Yunlin",
+      "area": "South",
+      "ch_name": "雲林縣"
+    }
+  ]
+}

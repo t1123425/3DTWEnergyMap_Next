@@ -1,0 +1,26 @@
+{
+    "data":[
+    {"cityId":"TWCHA","name":"Changhua"},
+    {"cityId":"TWCYI","name":"Chiayi City"},
+    {"cityId":"TWCYQ","name":"Chiayi"},
+    {"cityId":"TWHSQ","name":"Hsinchu"},
+    {"cityId":"TWHSZ","name":"Hsinchu City"},
+    {"cityId":"TWHUA","name":"Hualien"},
+    {"cityId":"TWILA","name":"Yilan"},
+    {"cityId":"TWKEE","name":"Keelung City"},
+    {"cityId":"TWKHH","name":"Kaohsiung City"},
+    {"cityId":"TWKIN","name":"Kinmen"},
+    {"cityId":"TWLIE","name":"Matsu Islands"},
+    {"cityId":"TWMIA","name":"Miaoli"},
+    {"cityId":"TWNAN","name":"Nantou"},
+    {"cityId":"TWNWT","name":"New Taipei City"},
+    {"cityId":"TWPEN","name":"Penghu"},
+    {"cityId":"TWPIF","name":"Pingtung"},
+    {"cityId":"TWTAO","name":"Taoyuan"},
+    {"cityId":"TWTNN","name":"Tainan City"},
+    {"cityId":"TWTPE","name":"Taipei City"},
+    {"cityId":"TWTTT","name":"Taitung"},
+    {"cityId":"TWTXG","name":"Taichung City"},
+    {"cityId":"TWYUN","name":"Yunlin"}
+]
+}
