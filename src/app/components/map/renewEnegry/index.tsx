@@ -36,7 +36,6 @@ const RenewEnergyMap:FC<RenewMapProps> = ({svgData}) => {
     const energyType = mainStore(state => state.energyType);
 
     const renewEnergyData = useMemo(()=>{
-        console.log('renew');
         const selectedEnergyStations = RenewableEnergyStation.filter(e => e[EnergyTypeKey].includes(energyType))
         return svgData.paths.map((path)=>{
             //找出地圖上各gis
@@ -81,7 +80,6 @@ const RenewEnergyMap:FC<RenewMapProps> = ({svgData}) => {
             box.getCenter(mapCenter)
             groupRef.current.position.sub(mapCenter)// 將 group 移動，讓中心在 (0,0,0)
             camera.lookAt(mapCenter);
-            //camera.position.z = 850;
             const defaultCityData = {
                 cityId:'',
                 city:'',
@@ -90,7 +88,6 @@ const RenewEnergyMap:FC<RenewMapProps> = ({svgData}) => {
             
             initalCityDataArray();
             setCurrentSelectCity(defaultCityData);
-            // console.log('camera pos',camera.position);
         }
          return ()=>{
             EffectRan.current = true;

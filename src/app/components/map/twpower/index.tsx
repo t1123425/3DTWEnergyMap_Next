@@ -33,7 +33,7 @@ const TWPowerMap:FC<PowerMapProp> = ({svgData}) => {
     const setCurrentSelectCity = mainStore(state => state.setCurrentSelectCity);
     const powerDataArray = mainStore(state => state.powerDataArray);
     const powerData = useMemo(()=>{
-        //console.log('powerdata',svgData);
+       
         return svgData.paths.map((path) => {
             //找出地圖上各gis
             const gis = taiwanGIS.find(e => e.cityId === path.userData?.node.id)
@@ -47,11 +47,13 @@ const TWPowerMap:FC<PowerMapProp> = ({svgData}) => {
                 name:gis?.ch_name ?? '',
                 cityId:gis?.cityId ?? ''
             }
-            // if(path.userData?.node.nodeName === 'path'){
-            //     console.log('path usedata',path.userData);
-            // }
-            // console.log(path.userData)
-            // 用電量預設選擇
+            /**
+             * 用電量訊息欄北中南東預設城市位置
+             * TWTPE - 台北
+             * TWTXG - 台中
+             * TWKHH - 高雄
+             * TWHUA - 花蓮
+             */
             if((gis?.cityId === 'TWTPE' || 
                gis?.cityId === 'TWTXG' || 
                gis?.cityId === 'TWKHH' || 
@@ -115,7 +117,6 @@ const TWPowerMap:FC<PowerMapProp> = ({svgData}) => {
          <group ref={groupRef}>
             {
                 powerData.map((data,i)=> (
-                        data.shape.userData?.node.nodeName === 'path'?(
                         <Area key={i} 
                             shape={data.shape}
                             areaColor={data.areaColor}
@@ -123,7 +124,7 @@ const TWPowerMap:FC<PowerMapProp> = ({svgData}) => {
                             ShowInfoType={data.ShowInfoType}
                             infoList={data.infolist}
                             cityData={data.cityData}
-                             />):null
+                         />
                 ))
             }
         </group>

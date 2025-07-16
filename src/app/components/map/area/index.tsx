@@ -29,8 +29,7 @@ const Area = forwardRef<Mesh,AreaProp>(({shape,areaColor,isHover,cityData,ShowIn
     const insideMeshRef = useRef<THREE.Mesh|null>(null);
     const EffectRan = useRef(false);
     const isUpdateCityDataRef = useRef(true);
-    //const {camera } = useThree();
-    //const mapCityDataArray = mainStore(state=> state.mapCityDataArray);
+    const renderMeshTimes = useRef(0);
     const updateCityDataArray = mainStore(state => state.updateCityDataArray);
     const renderInfoContent = useMemo(()=> {
         if(ShowInfoType === 'power'){
@@ -85,8 +84,8 @@ const Area = forwardRef<Mesh,AreaProp>(({shape,areaColor,isHover,cityData,ShowIn
         if(areaRef.current){
          
           areaRef.current.scale.lerp(isHover?targetScale:defaultsVector,alpha);
-
-          if(isUpdateCityDataRef.current && shape.userData?.node.nodeName === 'path'){
+          renderMeshTimes.current += 1;
+          if(renderMeshTimes.current === 2 && shape.userData?.node.nodeName === 'path'){
              const box = new THREE.Box3().setFromObject(areaRef.current);
              const center = box.getCenter(new THREE.Vector3());
              const stationData = {
@@ -94,7 +93,6 @@ const Area = forwardRef<Mesh,AreaProp>(({shape,areaColor,isHover,cityData,ShowIn
                 cityId:cityData.cityId,
                 pos:center
             }
-            //console.log('center',center);
             updateCityDataArray(stationData)
             isUpdateCityDataRef.current = false
            }

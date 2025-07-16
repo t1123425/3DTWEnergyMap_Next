@@ -78,7 +78,10 @@ const Navbar = () => {
                     return (
                         <span
                          key={i}
-                         onClick={()=>{updateMapMode(e.mode)}}
+                         onClick={()=>{
+                          updateMapMode(e.mode)
+                          setMenuOpen(false);
+                         }}
                          className={(mapMode === e.mode ?'text-blue-600':'text-gray-700')+' block  hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium'}>
                             {e.name}
                         </span>

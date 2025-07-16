@@ -30,12 +30,10 @@ export const PowerAreaDropdownSelector:FC = () => {
                   currentAreaData?.area === option.area ? "bg-blue-50" : ""
                 }`}
                 onClick={() => {
-                  const seletedGIS = taiwanGIS.find(e => e.area === option.area);
+                  const seletedGIS = taiwanGIS.find(e => e.area === option.area && ['TWTPE','TWTXG','TWKHH','TWHUA'].includes(e.cityId));
                   const zoominCityData = mapCityDataArray.find(e=> e.cityId === seletedGIS?.cityId);
-                  //console.log('seletedGIS',seletedGIS);
                   setCurrentAreaData(option);
                   if(zoominCityData){
-                    //console.log('zoominCityData',zoominCityData);
                     setCurrentSelectCity(zoominCityData);
                     setIsOpen(false);
                   }

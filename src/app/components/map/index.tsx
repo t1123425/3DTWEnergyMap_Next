@@ -7,42 +7,15 @@ import TWPowerMap from "@/app/components/map/twpower/index";
 import RenewEnegryMap from "@/app/components/map/renewEnegry/index";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
-// GIS來源資料如下
-/**
- * 發電(萬瓩)
- * 用電(萬瓩)
- */
-// type areaData = {
-//     cityId:string,
-//     name:string,
-//     area: string,
-//     ch_name: string,
-//     powergen?:number,
-//     powerConsumption?:number
-// }
-// 
 
 const Map = () => {
     const svgData = useLoader(SVGLoader,'/assets/tw.svg');
     const mapMode = mainStore((state)=> state.mapMode);
-    //const reNewEnegryStations = mainStore(state => state.mapCityDataArray);
     const currentSelectCity = mainStore(state => state.currentSelectCity)
     const setCurrentSelectCity = mainStore(state => state.setCurrentSelectCity);
     const controlsRef = useRef<OrbitControlsImpl | null>(null);
-    //const [animating, setAnimating] = useState(false)
+   
     const {camera } = useThree();
-    // const targetPos = useMemo(()=>{
-    //     console.log('reNewEnegryStations',reNewEnegryStations)
-    //     if(reNewEnegryStations.length){
-    //         const posX = reNewEnegryStations[2].pos.x;
-    //         const posY = reNewEnegryStations[2].pos.y;
-    //         return new THREE.Vector3(posX ,posY,400)
-    //     }else{
-    //         return new THREE.Vector3();
-    //     }
-
-        
-    // },[currentSelectCity])
     useFrame(()=>{
         if(currentSelectCity && controlsRef.current){
             const targetCameraPos = currentSelectCity.pos.clone().add(new THREE.Vector3(0,0,300));
@@ -54,7 +27,6 @@ const Map = () => {
             camera.lookAt(currentSelectCity.pos);
             const distance = camera.position.distanceTo(targetCameraPos)
             if(distance < 1){
-                //setAnimating(false)
                 setCurrentSelectCity(null);
             }
         }
