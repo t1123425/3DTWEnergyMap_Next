@@ -1,5 +1,5 @@
 import { useLoader,useFrame, useThree } from "@react-three/fiber";
-import { useRef,useEffect } from "react"
+import { useRef } from "react"
 import { SVGLoader } from "three/examples/jsm/Addons.js";
 import { OrbitControls } from '@react-three/drei';
 import { mainStore } from "@/store/index";
@@ -70,10 +70,6 @@ const Map = () => {
                     <RenewEnegryMap svgData={svgData} />
                 )
             }
-            {/* <mesh>
-                <coneGeometry args={[0.2, 0.3, 4]} />
-                <meshStandardMaterial color={'red'} />
-            </mesh>  */}
          </>
     )
    

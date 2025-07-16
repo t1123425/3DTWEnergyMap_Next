@@ -1,19 +1,29 @@
 'use client';
 
 import { Canvas } from '@react-three/fiber'
-import Navbar from '@/app/components/navbar/index';
+import Navbar from '@/app/components/navBar/index';
 import {mainStore} from '@/store';
 import Map from '@/app/components/map/index';
 import { DirectLight } from '@/app/components/lights/index';
 import { useEffect } from 'react';
-import  taiwanPower from '@/json/taiwanPower.json';
+import mockTaiwanPower from '@/json/taiwanPower.json';
 import {PowerAreaDropdownSelector,RnewEnegryTypeTabs} from '@/app/components/widgets/index'
+
 export default function Home() {
   const mapMode = mainStore((state)=> state.mapMode);
   const updatePowerDataArray = mainStore((state) => state.updatePowerDataArray);
   useEffect(()=>{
-    updatePowerDataArray(taiwanPower.data);
-  },[updatePowerDataArray])
+    fetch('/api/power-data')
+    .then(res => res.json())
+    .then(data => {
+      if(data && data.length){
+        updatePowerDataArray(data)
+      }
+    }).catch((err)=>{
+      console.error(err);
+      updatePowerDataArray(mockTaiwanPower.data);
+    })
+  },[])
   return (
     <>
       <Navbar />
