@@ -69,6 +69,7 @@ const defaultCityData = {
       pos:new THREE.Vector3(0,3,450),
   }
 export const RnewEnegryTypeTabs:FC = () => {
+  const [isMenuUp,setMenuUp] = useState(false);
   const mapCityDataArray = mainStore(state => state.mapCityDataArray);
   const setCurrentSelectCity = mainStore(state => state.setCurrentSelectCity)
   const energyType = mainStore(state => state.energyType);
@@ -76,7 +77,6 @@ export const RnewEnegryTypeTabs:FC = () => {
   const setCurrentTargetInfo = mainStore(state => state.setCurrentTargetInfo);
   const selectStation = (address:string) => {
     const cityData = mapCityDataArray.find(e => address.includes(e.city));
-    //console.log('renew mapCityDataArray',mapCityDataArray);
     if(cityData){
       const infoData = {
         cityId:cityData.cityId,
@@ -89,11 +89,23 @@ export const RnewEnegryTypeTabs:FC = () => {
   }
 
   const filterEnergyStations = useMemo(()=>{
-    //const filterTypeStations = RenewableEnergyStation.filter(e => e[EnergyTypeKey].includes(energyType))
     return RenewableEnergyStation.filter(e => e[EnergyTypeKey].includes(energyType))
   },[energyType]);
   return (
-    <div className="listWrap h-full w-full fixed top-20 z-10 bg-white left-5" style={{maxWidth:250}}>
+    <div className={'listWrap h-full w-full fixed z-10 bg-white rounded-lg duration-300 ease-in-out md:top-20 '+(isMenuUp?'top-20':'top-[calc(100%-66px)]')} style={{maxWidth:250,maxHeight:'100%'}}>
+        <div className="scrollUpBtnContent w-full flex flex-row gap-2 justify-center p-2 pb-0 border-b-1 border-gray-200  md:hidden" onClick={()=>{setMenuUp(!isMenuUp)}}>
+          <span className="text-center cursor-pointer">{isMenuUp?'收合選單':'展開選單'}</span>
+          {
+            isMenuUp?( 
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>):(
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  )
+          }
+        </div>
         <ul className="flex flex-row gap-1 pl-0.5 pr-0.5 h-fit">
           {
             EnergyTypes.map((e,i) => <li key={i} 
@@ -104,7 +116,7 @@ export const RnewEnegryTypeTabs:FC = () => {
                 className={'p-2 w-full text-center cursor-pointer '+(energyType === e.type?'text-blue-600 border-b-blue-600 border-b-2':'text-gray-400')}>{e.name}</li>)
           }
         </ul>
-        <div className="cityList overflow-auto h-full  border-t-2 border-gray-300">
+        <div className="cityList overflow-auto h-full bg-white border-t-2 border-gray-300 rounded-b-lg">
            <ul className="p-2 w-full" style={{paddingBottom:150}}>
               {
                 filterEnergyStations.map((e,i)=>{
@@ -112,6 +124,7 @@ export const RnewEnegryTypeTabs:FC = () => {
                     <li key={i} className="w-full p-2 cursor-pointer border-b-1 border-b-gray-400"
                     onClick={()=>{
                       selectStation(e[addressTypeKey]+e[descriptionKey]);
+                      setMenuUp(false);
                     }}>
                       <p>{e[nameKey]+'-'+e[descriptionKey]}</p>
                     </li>

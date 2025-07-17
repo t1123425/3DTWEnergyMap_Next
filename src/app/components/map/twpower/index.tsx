@@ -23,7 +23,6 @@ type PowerMapProp = {
 const mapCenter = new THREE.Vector3()
 const TWPowerMap:FC<PowerMapProp> = ({svgData}) => {
     const taiwanGIS = mainStore(state => state.taiwanGIS);
-    //const [mapArray,setMayArray] = useState<THREE.Vector3[]>([]);
     const currentAreaData = mainStore(state => state.currentAreaData);
     const groupRef = useRef<Group| null>(null);
     const EffectRan = useRef(false);
@@ -74,8 +73,8 @@ const TWPowerMap:FC<PowerMapProp> = ({svgData}) => {
 
                 infolist = [
                     '統計時間:'+ dataDate,
-                    '發電量:'+getTaiwanPowerData?.powerGen,
-                    '用電量:'+getTaiwanPowerData?.powerConsumption]
+                    '發電(萬瓩):'+getTaiwanPowerData?.powerGen,
+                    '用電(萬瓩):'+getTaiwanPowerData?.powerConsumption]
             }
              return {
                     shape:path,
