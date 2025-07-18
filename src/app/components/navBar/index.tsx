@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, usePathname,useSearchParams } from 'next/navigation';
 const navList = [
     {
@@ -25,6 +25,7 @@ const Navbar = () => {
   const linkActiveCheck = (link:string) => {
     if(pathname === '/'){
       const currentParam = searchParams.get('mapType');
+      if(!currentParam) return  '/?mapType=twp' === link;
       return '/?mapType='+currentParam === link;
     }else{
       return pathname === link;
