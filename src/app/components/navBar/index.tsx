@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter, usePathname,useSearchParams } from 'next/navigation';
 const navList = [
     {
