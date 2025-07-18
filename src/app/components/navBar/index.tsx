@@ -12,7 +12,7 @@ const navList = [
         link:'/?mapType=rnest'
     },
     {
-      name:'關於本站',
+      name:'關於',
       link:'/about'
     }
   ]
