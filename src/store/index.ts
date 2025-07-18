@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { taiwanGis } from '@/store/gisData';
-import  { type PowerData } from './utils/types';
+import  { type PowerData } from '@/utils/types';
 import * as THREE from "three";
 
 interface GISData{
