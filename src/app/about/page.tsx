@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <section style={{ position: 'relative', zIndex: 1 }} className="w-full h-full bg-white">
+        <section style={{ position: 'relative', zIndex: 1 }} className="w-full bg-white md:h-full">
             <div className="max-w-7xl mx-auto  px-4 pt-20 sm:px-6 lg:px-8">
                  <h1 className="text-center py-2 text-blue-600 text-3xl font-bold border-b-2 border-gray-300">關於本平台</h1>
                 <div className="text-center mt-2 text-sm md:text-base">

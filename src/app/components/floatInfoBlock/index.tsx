@@ -10,7 +10,7 @@ type FloatInfoBlockProps = {
 }
 const FloatInfoBlock:FC<FloatInfoBlockProps> = ({children}) => {
     return (
-        <Html as="div" position={[-30,10,0]} zIndexRange={[5, 0]} >
+        <Html as="div" position={[-80,40,0]} zIndexRange={[5, 0]} >
             <div className='infoWrap'>
                 {children}
             </div>

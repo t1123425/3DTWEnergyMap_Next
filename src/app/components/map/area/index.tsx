@@ -46,11 +46,17 @@ const Area = forwardRef<Mesh,AreaProp>(({shape,areaColor,isHover,cityData,ShowIn
                     }
                 </div>)
         }else if(ShowInfoType?.includes('renew')){
-            return (
-                <div className="info text-white" style={{minWidth:300}}>
-                    {infoList?.length?infoList.map((e,i) => 
-                        <p key={i}>{e}</p>):null}
-                </div>)
+            return infoList?.length?(
+                <div className="info bg-amber-50 p-2 rounded-2xl border border-black" style={{minWidth:300}}>
+                    {
+                        infoList.map((e,i)=>{
+                            return (
+                                <p key={i} className="text-gray-600 mb-2">{e}</p>
+                            )
+                        })
+                    }
+                </div>
+                ):null
         }else{
             return null
         }
@@ -85,7 +91,7 @@ const Area = forwardRef<Mesh,AreaProp>(({shape,areaColor,isHover,cityData,ShowIn
          
           areaRef.current.scale.lerp(isHover?targetScale:defaultsVector,alpha);
           renderMeshTimes.current += 1;
-          if(renderMeshTimes.current === 2 && shape.userData?.node.nodeName === 'path'){
+          if(renderMeshTimes.current === 4 && shape.userData?.node.nodeName === 'path'){
              const box = new THREE.Box3().setFromObject(areaRef.current);
              const center = box.getCenter(new THREE.Vector3());
              const stationData = {
