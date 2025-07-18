@@ -1,20 +1,35 @@
+'use client';
+
 import { useState } from "react";
-import {mainStore} from "@/store/index"
+import { useRouter, usePathname,useSearchParams } from 'next/navigation';
 const navList = [
     {
         name:'全台用電統計',
-        mode:'twp'
+        link:'/?mapType=twp'
     },
     {
         name:'全台再生能源電廠',
-        mode:'rnest'
+        link:'/?mapType=rnest'
+    },
+    {
+      name:'關於本站',
+      link:'/about'
     }
   ]
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const mapMode = mainStore((state)=> state.mapMode);
-  const updateMapMode = mainStore((state) => state.updateMapMode);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const linkActiveCheck = (link:string) => {
+    if(pathname === '/'){
+      const currentParam = searchParams.get('mapType');
+      return '/?mapType='+currentParam === link;
+    }else{
+      return pathname === link;
+    }
+  }
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,8 +43,10 @@ const Navbar = () => {
                     return (
                         <span
                          key={i}
-                         onClick={()=>{updateMapMode(e.mode)}}
-                         className={'cursor-pointer hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium '+(mapMode === e.mode ? 'text-blue-600':'text-gray-700')}>
+                         onClick={()=>{
+                          router.push(e.link)
+                         }}
+                         className={'cursor-pointer hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium '+(linkActiveCheck(e.link) ? 'text-blue-600':'text-gray-700')}>
                             {e.name}
                         </span>
                     )
@@ -79,10 +96,10 @@ const Navbar = () => {
                         <span
                          key={i}
                          onClick={()=>{
-                          updateMapMode(e.mode)
+                          router.push(e.link)
                           setMenuOpen(false);
                          }}
-                         className={(mapMode === e.mode ?'text-blue-600':'text-gray-700')+' block  hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium'}>
+                         className={(linkActiveCheck(e.link) ?'text-blue-600':'text-gray-700')+' block  hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium'}>
                             {e.name}
                         </span>
                     )

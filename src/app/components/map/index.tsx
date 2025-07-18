@@ -1,5 +1,5 @@
 import { useLoader,useFrame, useThree } from "@react-three/fiber";
-import { useRef } from "react"
+import { FC, useRef } from "react"
 import { SVGLoader } from "three/examples/jsm/Addons.js";
 import { OrbitControls } from '@react-three/drei';
 import { mainStore } from "@/store/index";
@@ -8,7 +8,10 @@ import RenewEnegryMap from "@/app/components/map/renewEnegry/index";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 
-const Map = () => {
+type MapProps = {
+    currenMapType:string
+}
+const Map:FC<MapProps> = ({currenMapType}) => {
     const svgData = useLoader(SVGLoader,'/assets/tw.svg');
     const mapMode = mainStore((state)=> state.mapMode);
     const currentSelectCity = mainStore(state => state.currentSelectCity)
@@ -35,10 +38,10 @@ const Map = () => {
           <>
             <OrbitControls ref={controlsRef} enableZoom={false} />
             {
-                mapMode === 'twp' && <TWPowerMap svgData={svgData} />
+                currenMapType === 'twp' && <TWPowerMap svgData={svgData} />
             }
             {
-                mapMode === 'rnest' && (
+                currenMapType === 'rnest' && (
                     <RenewEnegryMap svgData={svgData} />
                 )
             }
