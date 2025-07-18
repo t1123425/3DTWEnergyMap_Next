@@ -1,11 +1,10 @@
-import {  useEffect, useMemo, useRef, Suspense,type FC,forwardRef } from "react"
+import {  useEffect, useMemo, useRef, Suspense,type FC} from "react"
 import type { SVGResultPaths } from "three/examples/jsm/Addons.js"
 import { Edges } from '@react-three/drei';
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import FloatInfoBlock from "@/app/components/floatInfoBlock/index";
 import { OLBModel } from "@/app/components/map/3dModel/index";
-import { Mesh } from 'three';
 import { mainStore } from "@/store";
 type CityData = {
     name: string,
@@ -24,7 +23,7 @@ type AreaProp = {
 const defaultsVector = new THREE.Vector3(1,1,1);
 const targetScale = new THREE.Vector3(1,1,2)
 const alpha:number = 0.3;
-const Area = forwardRef<Mesh,AreaProp>(({shape,areaColor,isHover,cityData,ShowInfoType,infoList,isShowModel}, ref) => {
+const Area:FC<AreaProp> = ({shape,areaColor,isHover,cityData,ShowInfoType,infoList,isShowModel}) => {
     const areaRef = useRef<THREE.Mesh|null>(null);
     const insideMeshRef = useRef<THREE.Mesh|null>(null);
     const EffectRan = useRef(false);
@@ -150,6 +149,6 @@ const Area = forwardRef<Mesh,AreaProp>(({shape,areaColor,isHover,cityData,ShowIn
         </>
        
     )
-});
+};
 
 export default Area 

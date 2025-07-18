@@ -13,7 +13,6 @@ type MapProps = {
 }
 const Map:FC<MapProps> = ({currenMapType}) => {
     const svgData = useLoader(SVGLoader,'/assets/tw.svg');
-    const mapMode = mainStore((state)=> state.mapMode);
     const currentSelectCity = mainStore(state => state.currentSelectCity)
     const setCurrentSelectCity = mainStore(state => state.setCurrentSelectCity);
     const controlsRef = useRef<OrbitControlsImpl | null>(null);

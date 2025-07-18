@@ -1,5 +1,5 @@
 import {  useThree } from "@react-three/fiber";
-import { useRef,useEffect,useMemo, type FC, useState } from "react"
+import { useRef,useEffect,useMemo, type FC } from "react"
 import { Group} from 'three'
 import { mainStore } from "@/store/index";
 import { type SVGResult } from "three/examples/jsm/Addons.js";

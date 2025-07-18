@@ -10,6 +10,7 @@ const areaNameMap:AreaMapType = {
   "﻿南部":"South",
   "﻿東部":"East"
 }
+
 export async function GET() {
 
     try {
@@ -28,6 +29,7 @@ export async function GET() {
             console.error('CSV parsing errors:', parsed.errors)
             return NextResponse.json({ error: 'CSV 格式解析失敗' }, { status: 500 })
         }
+        /* eslint-disable  @typescript-eslint/no-explicit-any */
         const twPowerData = parsed.data.map((e:any) => {
           return {
             date:e['時間'],
