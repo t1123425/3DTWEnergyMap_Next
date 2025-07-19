@@ -29,7 +29,7 @@ const MainCanvas = () => {
                 }}>
         <Canvas camera={{fov:75,near:0.1,far:1000}}  fallback={<div className='text-center'>Sorry no WebGL supported!</div>}>
             <color attach="background" args={['#007FFF']} />
-            <Map currenMapType={mapMode} />
+            <Map currenMapType={mapMode} /> 
             <ambientLight color={0xffffff} intensity={0.8} />
             <DirectLight />
         </Canvas>

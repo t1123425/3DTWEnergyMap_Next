@@ -90,7 +90,7 @@ const Area:FC<AreaProp> = ({shape,areaColor,isHover,cityData,ShowInfoType,infoLi
          
           areaRef.current.scale.lerp(isHover?targetScale:defaultsVector,alpha);
           renderMeshTimes.current += 1;
-          if(renderMeshTimes.current === 4 && shape.userData?.node.nodeName === 'path'){
+          if(renderMeshTimes.current === 3 && shape.userData?.node.nodeName === 'path'){
              const box = new THREE.Box3().setFromObject(areaRef.current);
              const center = box.getCenter(new THREE.Vector3());
              const stationData = {
