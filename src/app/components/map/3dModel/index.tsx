@@ -9,10 +9,11 @@ type ModelProps = {
 }
 export const OLBModel:FC<ModelProps> = ({path,rotateX,scale}) => {
     const primitiveRef = useRef<Mesh|null>(null);
+    const initRef = useRef(true);
     const {scene} = useGLTF(path);
     const cloneScene = useMemo(()=> scene.clone(),[scene]);
     useEffect(()=>{
-        if(primitiveRef.current && rotateX){
+        if(primitiveRef.current && initRef.current){
             if(rotateX){
                 primitiveRef.current.rotateX(rotateX)
             }
@@ -22,7 +23,10 @@ export const OLBModel:FC<ModelProps> = ({path,rotateX,scale}) => {
             primitiveRef.current.position.set(0,0,-10);
             
         }
-    },[])
+        return ()=>{
+            initRef.current = false;
+        }
+    },[rotateX,scale])
     return (
         <primitive
          ref={primitiveRef}

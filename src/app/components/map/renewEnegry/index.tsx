@@ -26,7 +26,7 @@ const installedCapacityKey = '裝置容量(瓩)\/Installed Capacity(kW)';
 
 const RenewEnergyMap:FC<RenewMapProps> = ({svgData}) => {
     const groupRef = useRef<Group| null>(null);
-    const EffectRan = useRef(false);
+    const EffectRan = useRef(true);
     const {camera } = useThree();
     const box = new THREE.Box3();
     const taiwanGIS = mainStore(state => state.taiwanGIS);
@@ -90,7 +90,7 @@ const RenewEnergyMap:FC<RenewMapProps> = ({svgData}) => {
             setCurrentSelectCity(defaultCityData);
         }
          return ()=>{
-            EffectRan.current = true;
+            EffectRan.current = false;
         }
        
     },[])

@@ -25,7 +25,7 @@ const TWPowerMap:FC<PowerMapProp> = ({svgData}) => {
     const taiwanGIS = mainStore(state => state.taiwanGIS);
     const currentAreaData = mainStore(state => state.currentAreaData);
     const groupRef = useRef<Group| null>(null);
-    const EffectRan = useRef(false);
+    const EffectRan = useRef(true);
     const {camera } = useThree();
     const box = new THREE.Box3();
     const initalCityDataArray = mainStore(state => state.initalCityDataArray);
@@ -90,7 +90,7 @@ const TWPowerMap:FC<PowerMapProp> = ({svgData}) => {
     },[svgData,taiwanGIS,currentAreaData,powerDataArray]) 
     
     useEffect(()=>{
-        if(EffectRan.current && groupRef.current){
+        if(groupRef.current && EffectRan.current){
             groupRef.current.rotateX((Math.PI)- 45);
             groupRef.current.rotateZ(Math.PI/8);
             box.setFromObject(groupRef.current)
@@ -107,7 +107,7 @@ const TWPowerMap:FC<PowerMapProp> = ({svgData}) => {
             setCurrentSelectCity(defaultCityData);
         }
          return ()=>{
-            EffectRan.current = true;
+            EffectRan.current = false;
         }
        
     },[])

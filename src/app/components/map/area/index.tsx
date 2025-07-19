@@ -26,7 +26,7 @@ const alpha:number = 0.3;
 const Area:FC<AreaProp> = ({shape,areaColor,isHover,cityData,ShowInfoType,infoList,isShowModel}) => {
     const areaRef = useRef<THREE.Mesh|null>(null);
     const insideMeshRef = useRef<THREE.Mesh|null>(null);
-    const EffectRan = useRef(false);
+    const EffectRan = useRef(true);
     const isUpdateCityDataRef = useRef(true);
     const renderMeshTimes = useRef(0);
     const updateCityDataArray = mainStore(state => state.updateCityDataArray);
@@ -73,7 +73,7 @@ const Area:FC<AreaProp> = ({shape,areaColor,isHover,cityData,ShowInfoType,infoLi
             insideMeshRef.current.position.set(center.x,center.y,center.z);
         }
         return ()=>{
-            EffectRan.current = true;
+            EffectRan.current = false;
         }
     },[])
     const modelScaleDetect = () => {
@@ -115,7 +115,6 @@ const Area:FC<AreaProp> = ({shape,areaColor,isHover,cityData,ShowInfoType,infoLi
                 <Edges lineWidth={1} threshold={15} color={'#fff'} />
             </mesh>
              <mesh ref={insideMeshRef} >
-                {/* <axesHelper scale={150} /> */}
                 {
                     ShowInfoType === 'power' && isHover && (
 
@@ -134,7 +133,7 @@ const Area:FC<AreaProp> = ({shape,areaColor,isHover,cityData,ShowInfoType,infoLi
                             <Suspense fallback={null}>
                                 {/* 在3d model元件外層添加<group key={...}> 用於讓react diff更好判定模組更新，當要切換不同3d模型時會更好判定處理 */}
                                 <group key={ShowInfoType}>
-                                    <OLBModel path={'/GLBs/'+ShowInfoType+'.glb'} rotateX={-Math.PI/4} scale={modelScaleDetect()} />
+                                    <OLBModel path={'/GLBs/'+ShowInfoType+'.glb'} rotateX={(270*(Math.PI/180))} scale={modelScaleDetect()} />
                                 </group>
                             </Suspense>
                             <FloatInfoBlock >
