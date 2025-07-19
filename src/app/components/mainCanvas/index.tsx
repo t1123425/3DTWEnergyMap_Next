@@ -6,13 +6,10 @@ import Map from '@/app/components/map/index';
 import { DirectLight } from '@/app/components/lights/index';
 import { useEffect } from 'react';
 import mockTaiwanPower from '@/json/taiwanPower.json';
-import { useSearchParams } from 'next/navigation';
 
 const MainCanvas = () => {
-    const searchParams = useSearchParams();
-      const currenMapType = searchParams.get('mapType') ?? 'twp';
+    const mapMode = mainStore(state => state.mapMode);
     const updatePowerDataArray = mainStore((state) => state.updatePowerDataArray);
-
   useEffect(()=>{
     fetch('/api/power-data')
     .then(res => res.json())
@@ -32,7 +29,7 @@ const MainCanvas = () => {
                 }}>
         <Canvas camera={{fov:75,near:0.1,far:1000}}  fallback={<div className='text-center'>Sorry no WebGL supported!</div>}>
             <color attach="background" args={['#007FFF']} />
-            <Map currenMapType={currenMapType} />
+            <Map currenMapType={mapMode} />
             <ambientLight color={0xffffff} intensity={0.8} />
             <DirectLight />
         </Canvas>

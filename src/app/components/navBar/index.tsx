@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, usePathname,useSearchParams } from 'next/navigation';
+import {mainStore} from '@/store';
 const navList = [
     {
         name:'全台用電統計',
@@ -20,17 +21,21 @@ const navList = [
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const searchParams = useSearchParams();
+  const currentParam = searchParams.get('mapType');
   const router = useRouter();
   const pathname = usePathname();
+  const updateMapMode = mainStore(state => state.updateMapMode);
   const linkActiveCheck = (link:string) => {
     if(pathname === '/'){
-      const currentParam = searchParams.get('mapType');
-      if(!currentParam) return  '/?mapType=twp' === link;
+      if(!currentParam) {return  '/?mapType=twp' === link};
       return '/?mapType='+currentParam === link;
     }else{
       return pathname === link;
     }
   }
+  useEffect(()=>{
+    updateMapMode(currentParam ?? 'twp')
+  },[currentParam])
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

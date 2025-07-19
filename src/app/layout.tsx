@@ -30,9 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen`}
       >
-        <Navbar />
         <MainCanvas />
-        <Suspense>
+        <Suspense fallback={null}>
+              <Navbar />
              {children}
         </Suspense>
       </body>
